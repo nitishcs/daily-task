@@ -5,7 +5,7 @@ const list = [
   "Grapes",
   "Mango",
   "Apple",
-  "akkakaashhaa"
+  "Watermelon"
 ]
 
 
