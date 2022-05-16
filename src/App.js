@@ -1,24 +1,35 @@
-import logo from './logo.svg';
 import './App.css';
+import { useState } from 'react';
+const list = [
+  "Banana",
+  "Grapes",
+  "Mango",
+  "Apple",
+  "akkakaashhaa"
+]
+
 
 function App() {
+  const [filter, setFilter] = useState(list)
+  const handlefilter = (event) => {
+    if (event.target.value === "") {
+      setFilter(list)
+      return;
+    }
+    const filterdvalue = list.filter((item) => item.toLocaleLowerCase().indexOf(event.target.value.toLocaleLowerCase()) !== -1)
+    setFilter(filterdvalue)
+    console.log("filterdvalue", filterdvalue)
+  }
+  console.log("filter", filter)
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      Search:<input type="search" name="search" onChange={handlefilter} />
+      {filter && filter.map((val) => {
+        return <div>{val}</div>
+      })
+      }
+    </div >
+
   );
 }
 
